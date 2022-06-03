@@ -4,4 +4,12 @@ The Odin Project Curriculum - Full Stack JavaScript Path - JavaScript Section - 
 
 Goal: Replicate your favorite website.
 
-[Demo Link](https://stanimirkosev.github.io/odin-twitter-clone/)
+## Tools:
+
+- React
+- Firebase - Cloud Firestore
+- Material UI Icons
+- React Flip Move
+- React Twitter Embed
+
+[Demo Link]()

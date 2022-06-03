@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Avatar, Button } from "@mui/material";
 import { getFirestore, collection, addDoc } from "firebase/firestore";
+import ImageOutlinedIcon from "@mui/icons-material/ImageOutlined";
 
 function TweetBox() {
   const [tweetMessage, setTweetMessage] = useState("");
@@ -34,13 +35,18 @@ function TweetBox() {
             type="text"
           />
         </div>
-        <Button
-          onClick={sendTweet}
-          type="submit"
-          className="tweet-box-tweet-btn"
-        >
-          Tweet
-        </Button>
+        <div className="tweet-box-footer">
+          <div className="picture-icon-container">
+            <ImageOutlinedIcon className="picture-icon" />
+          </div>
+          <Button
+            onClick={sendTweet}
+            type="submit"
+            className="tweet-box-tweet-btn"
+          >
+            Tweet
+          </Button>
+        </div>
       </form>
     </div>
   );
