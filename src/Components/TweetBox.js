@@ -1,15 +1,46 @@
-import React from "react";
+import React, { useState } from "react";
 import { Avatar, Button } from "@mui/material";
+import { getFirestore, collection, addDoc } from "firebase/firestore";
 
 function TweetBox() {
+  const [tweetMessage, setTweetMessage] = useState("");
+  // image input
+
+  const sendTweet = (e) => {
+    e.preventDefault();
+
+    const posts = collection(getFirestore(), "posts"); // same as other
+    addDoc(posts, {
+      displayName: "Stanimir Kosev",
+      username: "stanimir",
+      verified: true,
+      text: tweetMessage,
+      avatar: "",
+      image: "https://pbs.twimg.com/media/EkVEHXoXcAcOrN4?format=png&name=orig",
+    });
+
+    setTweetMessage();
+  };
+
   return (
     <div className="tweet-box">
       <form>
         <div className="tweet-box-input">
           <Avatar />
-          <input placeholder="What's happening?" type="text" />
+          <input
+            onChange={(e) => setTweetMessage(e.target.value)}
+            value={tweetMessage}
+            placeholder="What's happening?"
+            type="text"
+          />
         </div>
-        <Button className="tweet-box-tweet-btn">Tweet</Button>
+        <Button
+          onClick={sendTweet}
+          type="submit"
+          className="tweet-box-tweet-btn"
+        >
+          Tweet
+        </Button>
       </form>
     </div>
   );

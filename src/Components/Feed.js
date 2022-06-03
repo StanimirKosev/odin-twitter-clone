@@ -8,12 +8,13 @@ import { getFirestore, collection, getDocs } from "firebase/firestore";
 function Feed() {
   const [posts, setPosts] = useState([]);
 
+  // key
   useEffect(() => {
     const posts = collection(getFirestore(), "posts");
     getDocs(posts).then((snapshot) => {
       setPosts(snapshot.docs.map((doc) => doc.data()));
     });
-  }, []);
+  });
 
   return (
     <div className="feed">
