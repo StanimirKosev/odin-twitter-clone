@@ -1,6 +1,6 @@
 import React from "react";
 import TwitterIcon from "@mui/icons-material/Twitter";
-import HomeIcon from "@mui/icons-material/Home";
+import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
 import TagIcon from "@mui/icons-material/Tag";
 import NotificationsNoneIcon from "@mui/icons-material/NotificationsNone";
 import EmailOutlinedIcon from "@mui/icons-material/EmailOutlined";
@@ -14,14 +14,20 @@ import { Button } from "@mui/material";
 function Sidebar() {
   return (
     <div className="sidebar">
-      <SidebarOption Icon={TwitterIcon} logo />
-      <SidebarOption active text="Home" Icon={HomeIcon} />
+      <SidebarOption Icon={TwitterIcon} logo link path="/" />
+      <SidebarOption active text="Home" Icon={HomeOutlinedIcon} link path="/" />
       <SidebarOption text="Explore" Icon={TagIcon} />
       <SidebarOption text="Notifications" Icon={NotificationsNoneIcon} />
       <SidebarOption text="Messages" Icon={EmailOutlinedIcon} />
       <SidebarOption text="Bookmark" Icon={BookmarkBorderOutlinedIcon} />
       <SidebarOption text="Lists" Icon={ListAltIcon} />
-      <SidebarOption text="Profile" Icon={PermIdentityIcon} />
+      <SidebarOption
+        active
+        text="Profile"
+        Icon={PermIdentityIcon}
+        link
+        path="/profile"
+      />
       <SidebarOption text="More" Icon={MoreHorizIcon} />
       <Button variant="outlined" className="sidebar-tweet" fullWidth>
         Tweet

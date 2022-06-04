@@ -70,6 +70,8 @@ body {
 /*Sidebar options diff hover effect*/
 .Home {
   width: 70%;
+  text-decoration: none;
+  color: black;
 }
 
 .Explore {
@@ -95,6 +97,8 @@ body {
 
 .Profile {
   width: 72%;
+  text-decoration: none;
+  color: black;
 }
 
 .header-icon-container:hover,
@@ -140,6 +144,7 @@ body {
   background-color: rgb(26, 138, 212) !important;
 }
 
+.profile,
 .feed {
   flex: 0.475;
   border-right: 1px solid var(--twitter-background);
@@ -168,10 +173,12 @@ body {
   height: 50px;
 }
 
-.feed-header > h2 {
+.link {
   font-size: 20px;
   font-weight: 800;
   cursor: pointer;
+  text-decoration: none;
+  color: black;
 }
 
 .tweet-box {
