@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/odin-twitter-clone/static/css/main.6d75aa90.css",
+    "main.js": "/odin-twitter-clone/static/js/main.7bacd34c.js",
+    "index.html": "/odin-twitter-clone/index.html",
+    "main.6d75aa90.css.map": "/odin-twitter-clone/static/css/main.6d75aa90.css.map",
+    "main.7bacd34c.js.map": "/odin-twitter-clone/static/js/main.7bacd34c.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.6d75aa90.css",
+    "static/js/main.7bacd34c.js"
+  ]
+}
