@@ -11,22 +11,21 @@ import { Link } from "react-router-dom";
 function Feed() {
   const [posts, setPosts] = useState([]);
 
-  // key
-  useEffect(() => {});
-
-  const db = collection(getFirestore(), "posts");
-
-  /*getDocs(db).then((snapshot) => {
-    let arr = [];
-    snapshot.docs.forEach((doc) => {
-      arr.push({ ...doc.data(), id: doc.id });
+  useEffect(() => {
+    const db = collection(getFirestore(), "posts");
+    getDocs(db).then((snapshot) => {
+      let arr = [];
+      snapshot.docs.forEach((doc) => {
+        arr.push({ ...doc.data(), id: doc.id });
+      });
+      setPosts(arr);
     });
-  });*/
+  });
 
   return (
     <div className="feed">
       <div className="feed-header">
-        <Link className="link" to="/">
+        <Link className="link" to="/odin-twitter-clone">
           Home
         </Link>
         <div className="header-icon-container">
@@ -34,19 +33,21 @@ function Feed() {
         </div>
       </div>
       <TweetBox />
-      {/*<FlipMove>
-        {posts.map((post) => (
-          <Post
-            key={post.id}
-            displayName={post.displayName}
-            username={post.username}
-            verified={post.verified}
-            text={post.text}
-            avatar={post.avatar}
-            image={post.image}
-          />
-        ))}
-        </FlipMove>*/}
+      {
+        <FlipMove>
+          {posts.map((post) => (
+            <Post
+              key={post.id}
+              displayName={post.displayName}
+              username={post.username}
+              verified={post.verified}
+              text={post.text}
+              avatar={post.avatar}
+              image={post.image}
+            />
+          ))}
+        </FlipMove>
+      }
     </div>
   );
 }

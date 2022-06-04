@@ -20,7 +20,7 @@ function TweetBox() {
       image: "https://pbs.twimg.com/media/EkVEHXoXcAcOrN4?format=png&name=orig",
     });
 
-    setTweetMessage();
+    setTweetMessage("");
   };
 
   return (
