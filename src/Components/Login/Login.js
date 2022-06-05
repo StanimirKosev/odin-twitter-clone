@@ -26,6 +26,7 @@ function Login({ logInMenu }) {
     setLoading(true);
     try {
       await logIn(emailRef.current.value, passwordRef.current.value);
+      logInMenu();
     } catch {
       alert("Error! Wrong password!");
     }
@@ -54,20 +55,30 @@ function Login({ logInMenu }) {
             ? `You are currently logged as: ${currentUser?.email}`
             : "You are currently not logged in."}
         </div>
-        <input ref={emailRef} placeholder="Email" />
-        <input ref={passwordRef} type="password" placeholder="Password" />
-        <button disabled={loading || currentUser} onClick={handleSignUp}>
-          Sign Up
-        </button>
-        <button disabled={loading || currentUser} onClick={handleLogIn}>
-          Log In
-        </button>
-        <button disabled={loading || !currentUser} onClick={handleLogOut}>
-          Log Out
-        </button>
-        <button disabled={loading || !currentUser} onClick={logInMenu}>
-          Continue
-        </button>
+
+        {!currentUser && (
+          <>
+            <input ref={emailRef} placeholder="Email" />
+            <input ref={passwordRef} type="password" placeholder="Password" />
+            <button disabled={loading} onClick={handleSignUp}>
+              Sign Up
+            </button>
+            <button disabled={loading} onClick={handleLogIn}>
+              Log In
+            </button>
+          </>
+        )}
+
+        {currentUser && (
+          <>
+            <button disabled={loading} onClick={handleLogOut}>
+              Log Out
+            </button>
+            <button disabled={loading} onClick={logInMenu}>
+              Continue
+            </button>
+          </>
+        )}
       </div>
     </div>
   );

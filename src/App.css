@@ -331,6 +331,7 @@ body {
   padding-bottom: 10px;
 }
 
+/*****************8*/
 .overlay {
   position: fixed;
   transition: 200ms ease-in-out;
@@ -355,4 +356,9 @@ img[alt*="twitter-login"] {
 #email {
   font-size: 30px;
   color: white;
+}
+
+.user {
+  color: white;
+  margin: 20px;
 }

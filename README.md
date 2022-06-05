@@ -7,7 +7,7 @@ Goal: Replicate your favorite website.
 ## Tools:
 
 - React
-- Firebase - Cloud Firestore , Authentication
+- Firebase - Cloud Firestore , Authentication , Cloud Storage
 - Material UI Icons
 - React Flip Move
 - React Twitter Embed
