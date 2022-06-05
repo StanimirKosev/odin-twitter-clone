@@ -2,18 +2,17 @@ import "./App.css";
 import Sidebar from "./Components/Sidebar/Sidebar";
 import Feed from "./Components/Feed/Feed";
 import Widgets from "./Components/Widgets/Widgets";
-import Profile from "./Profile/Profile";
+import Profile from "./Components/Profile/Profile";
+import Login from "./Components/Login/Login";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-/*import React, { createContext, useState } from "react";*/
-
-/*export const ThemeContext = createContext(null);*/
+import React, { useState } from "react";
 
 function App() {
-  /*const [theme, setTheme] = useState("dark");
+  const [showLoginMenu, setShowLoginMenu] = useState(true);
 
-  const toggleTheme = () => {
-    setTheme((current) => (current === "light" ? "dark" : "light"));
-  };*/
+  const logInMenu = () => {
+    setShowLoginMenu(!showLoginMenu);
+  };
 
   return (
     <Router>
@@ -25,6 +24,7 @@ function App() {
         </Routes>
         <Widgets />
       </div>
+      {showLoginMenu ? <Login logInMenu={logInMenu} /> : null}
     </Router>
   );
 }

@@ -330,3 +330,29 @@ body {
   font-weight: bold;
   padding-bottom: 10px;
 }
+
+.overlay {
+  position: fixed;
+  transition: 200ms ease-in-out;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgb(0, 0, 0, 1);
+  z-index: 100;
+  display: flex;
+  color: white;
+}
+
+img[alt*="twitter-login"] {
+  width: 55%;
+}
+
+.logo-login {
+  color: white;
+}
+
+#email {
+  font-size: 30px;
+  color: white;
+}
