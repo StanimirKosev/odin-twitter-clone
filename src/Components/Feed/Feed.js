@@ -1,26 +1,22 @@
 import React, { useState, useEffect } from "react";
 import TweetBox from "./TweetBox";
 import Post from "./Post";
-import { firebaseConfig } from "../../firebase-config";
-import { initializeApp } from "firebase/app";
-import { getFirestore, collection, getDocs } from "firebase/firestore";
 import AutoAwesomeOutlinedIcon from "@mui/icons-material/AutoAwesomeOutlined";
 import FlipMove from "react-flip-move";
 import { Link } from "react-router-dom";
+import db from "../../firebase-config";
+import { collection, onSnapshot } from "firebase/firestore";
 
 function Feed() {
   const [posts, setPosts] = useState([]);
 
-  useEffect(() => {
-    const db = collection(getFirestore(), "posts");
-    getDocs(db).then((snapshot) => {
-      let arr = [];
-      snapshot.docs.forEach((doc) => {
-        arr.push({ ...doc.data(), id: doc.id });
-      });
-      setPosts(arr);
-    });
-  });
+  useEffect(
+    () =>
+      onSnapshot(collection(db, "posts"), (snapshot) =>
+        setPosts(snapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id })))
+      ),
+    []
+  );
 
   return (
     <div className="feed">
@@ -53,4 +49,3 @@ function Feed() {
 }
 
 export default Feed;
-initializeApp(firebaseConfig);

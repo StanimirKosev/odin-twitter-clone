@@ -7,6 +7,8 @@ function Profile() {
     <div className="profile">
       <div className="feed-header">
         <Link className="link" to="/">
+          {" "}
+          {/*bugva*/}
           Home
         </Link>
         <div className="header-icon-container">

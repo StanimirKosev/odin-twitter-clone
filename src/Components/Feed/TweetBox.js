@@ -1,17 +1,18 @@
 import React, { useState } from "react";
 import { Avatar, Button } from "@mui/material";
-import { getFirestore, collection, addDoc } from "firebase/firestore";
+import { addDoc, collection } from "firebase/firestore";
+import db from "../../firebase-config";
 import ImageOutlinedIcon from "@mui/icons-material/ImageOutlined";
 
 function TweetBox() {
   const [tweetMessage, setTweetMessage] = useState("");
   // image input
 
-  const sendTweet = (e) => {
+  const sendTweet = async (e) => {
     e.preventDefault();
 
-    const posts = collection(getFirestore(), "posts"); // same as other
-    addDoc(posts, {
+    const collRef = collection(db, "posts");
+    await addDoc(collRef, {
       displayName: "Stanimir Kosev",
       username: "stanimir",
       verified: true,
@@ -19,7 +20,6 @@ function TweetBox() {
       avatar: "",
       image: "https://pbs.twimg.com/media/EkVEHXoXcAcOrN4?format=png&name=orig",
     });
-
     setTweetMessage("");
   };
 
