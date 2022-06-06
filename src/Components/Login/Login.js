@@ -2,9 +2,10 @@ import React, { useRef, useState } from "react";
 import { signUp, logOut, logIn, useAuth } from "../../firebase-config";
 import twitterPic from "./twitterPic.webp";
 import TwitterIcon from "@mui/icons-material/Twitter";
-import { Button } from "@mui/material";
+import { Button, Avatar } from "@mui/material";
+import { updateProfile } from "firebase/auth";
 
-function Login({ logInMenu }) {
+function Login({ logInMenu, avatar }) {
   const [loading, setLoading] = useState(false);
   const currentUser = useAuth();
 
@@ -15,9 +16,11 @@ function Login({ logInMenu }) {
     setLoading(true);
     try {
       await signUp(emailRef.current.value, passwordRef.current.value);
+      logInMenu();
+      updateProfile(currentUser, { photoURL: "" });
     } catch {
       alert(
-        "Cannot register with same email and password must be atleast 6 characters!"
+        "Cannot register with same email. Password must be atleast 6 characters!"
       );
     }
     setLoading(false);
@@ -74,7 +77,7 @@ function Login({ logInMenu }) {
                 Sign Up
               </Button>
 
-              <div className="and">and</div>
+              <div className="and">and/or</div>
               <Button
                 disabled={loading}
                 onClick={handleLogIn}
@@ -82,6 +85,11 @@ function Login({ logInMenu }) {
               >
                 Log In
               </Button>
+              <div className="text-info">
+                *Email can be fake. Cannot register/sign up with same email,
+                password must be atleast 6 characters, log in with a existing
+                account or sign up and then log in.
+              </div>
             </div>
           </>
         )}
@@ -91,9 +99,10 @@ function Login({ logInMenu }) {
             <Button
               disabled={loading}
               onClick={logInMenu}
-              className="btns-login-menu"
+              className="btns-login-menu first-btn-login"
             >
-              Sign in as {currentUser?.email}
+              <Avatar src={avatar} sx={{ width: 40, height: 40 }} />
+              Sign in as {currentUser?.email.split("@")[0]}
             </Button>
 
             <div className="or">or</div>

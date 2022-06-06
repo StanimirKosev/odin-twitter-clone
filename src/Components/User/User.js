@@ -21,7 +21,7 @@ export default function User({ getAvatar }) {
       setPhotoURL(currentUser.photoURL);
       getAvatar(currentUser.photoURL);
     }
-  }, [currentUser]);
+  }, [currentUser, getAvatar]);
 
   return (
     <div className="user">
@@ -29,7 +29,7 @@ export default function User({ getAvatar }) {
       <button disabled={loading || !photo} onClick={handleClick}>
         Upload
       </button>
-      <Avatar src={photoURL} />
+      <Avatar src={photoURL} sx={{ width: 50, height: 50 }} />
     </div>
   );
 }

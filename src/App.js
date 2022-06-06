@@ -10,7 +10,6 @@ import React, { useState } from "react";
 function App() {
   const [showLoginMenu, setShowLoginMenu] = useState(true);
   const [avatar, setAvatar] = useState();
-
   const logInMenu = () => {
     setShowLoginMenu(!showLoginMenu);
   };
@@ -24,7 +23,10 @@ function App() {
       <div className="app">
         <Sidebar logInMenu={logInMenu} avatar={avatar} />
         <Routes>
-          <Route path="/odin-twitter-clone" element={<Feed />} />
+          <Route
+            path="/odin-twitter-clone"
+            element={<Feed avatar={avatar} />}
+          />
           <Route
             path="/odin-twitter-clone/profile"
             element={<Profile getAvatar={getAvatar} />}
@@ -32,7 +34,7 @@ function App() {
         </Routes>
         <Widgets />
       </div>
-      {showLoginMenu ? <Login logInMenu={logInMenu} /> : null}
+      {showLoginMenu ? <Login logInMenu={logInMenu} avatar={avatar} /> : null}
     </Router>
   );
 }

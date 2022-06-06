@@ -10,11 +10,12 @@ import PermIdentityIcon from "@mui/icons-material/PermIdentity";
 import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
 import SidebarOption from "./SidebarOption";
 import { Button, Avatar } from "@mui/material";
-import { logOut } from "../../firebase-config";
+import { logOut, useAuth } from "../../firebase-config";
 
 function Sidebar({ logInMenu, avatar }) {
   const [logOutModal, setLogOutModal] = useState(false);
   const [loading, setLoading] = useState(false);
+  const currentUser = useAuth();
 
   async function handleLogOut() {
     setLoading(true);
@@ -56,10 +57,10 @@ function Sidebar({ logInMenu, avatar }) {
         className="profile-sidebar-bottom"
         onClick={() => setLogOutModal(!logOutModal)}
       >
-        <Avatar src={avatar} />
+        <Avatar src={avatar} sx={{ width: 45, height: 45 }} />
         <div>
-          <div>Stanimir Kosev</div>
-          <div>@stanimir</div>
+          <div>{currentUser?.email.split("@")[0]}</div>
+          <div className="at">{`@${currentUser?.email.split("@")[0]}`}</div>
         </div>
         <MoreHorizIcon />
         {logOutModal ? (

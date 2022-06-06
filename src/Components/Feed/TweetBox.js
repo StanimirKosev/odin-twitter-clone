@@ -1,11 +1,12 @@
 import React, { useState } from "react";
 import { Avatar, Button } from "@mui/material";
 import { addDoc, collection } from "firebase/firestore";
-import db from "../../firebase-config";
+import db, { useAuth } from "../../firebase-config";
 import ImageOutlinedIcon from "@mui/icons-material/ImageOutlined";
 
-function TweetBox() {
+function TweetBox({ avatar }) {
   const [tweetMessage, setTweetMessage] = useState("");
+  const currentUser = useAuth();
   // image input
 
   const sendTweet = async (e) => {
@@ -13,11 +14,11 @@ function TweetBox() {
 
     const collRef = collection(db, "posts");
     await addDoc(collRef, {
-      displayName: "Stanimir Kosev",
-      username: "stanimir",
+      displayName: currentUser?.email.split("@")[0],
+      username: `@${currentUser?.email.split("@")[0]}`,
       verified: true,
       text: tweetMessage,
-      avatar: "",
+      avatar: "", // hardcoded
       image: "https://pbs.twimg.com/media/EkVEHXoXcAcOrN4?format=png&name=orig",
     });
     setTweetMessage("");
@@ -27,7 +28,7 @@ function TweetBox() {
     <div className="tweet-box">
       <form>
         <div className="tweet-box-input">
-          <Avatar />
+          <Avatar src={avatar} sx={{ width: 50, height: 50 }} />
           <input
             onChange={(e) => setTweetMessage(e.target.value)}
             value={tweetMessage}

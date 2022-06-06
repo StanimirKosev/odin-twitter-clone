@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 import db from "../../firebase-config";
 import { collection, onSnapshot } from "firebase/firestore";
 
-function Feed() {
+function Feed({ avatar }) {
   const [posts, setPosts] = useState([]);
 
   useEffect(
@@ -28,7 +28,7 @@ function Feed() {
           <AutoAwesomeOutlinedIcon className="header-icon" />
         </div>
       </div>
-      <TweetBox />
+      <TweetBox avatar={avatar} sx={{ width: 50, height: 50 }} />
       {
         <FlipMove>
           {posts.map((post) => (
