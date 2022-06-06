@@ -2,6 +2,7 @@ import React, { useRef, useState } from "react";
 import { signUp, logOut, logIn, useAuth } from "../../firebase-config";
 import twitterPic from "./twitterPic.webp";
 import TwitterIcon from "@mui/icons-material/Twitter";
+import { Button } from "@mui/material";
 
 function Login({ logInMenu }) {
   const [loading, setLoading] = useState(false);
@@ -28,7 +29,7 @@ function Login({ logInMenu }) {
       await logIn(emailRef.current.value, passwordRef.current.value);
       logInMenu();
     } catch {
-      alert("Error! Wrong password!");
+      alert("Error!");
     }
     setLoading(false);
   }
@@ -46,38 +47,64 @@ function Login({ logInMenu }) {
   return (
     <div className="overlay">
       <img alt="twitter-login" src={twitterPic} />
-      <div>
+      <div className="login-menu">
         <TwitterIcon className="logo-login" />
         <h1>Happening now</h1>
         <h3>Join Twitter today.</h3>
-        <div id="email">
-          {currentUser?.email
-            ? `You are currently logged as: ${currentUser?.email}`
-            : "You are currently not logged in."}
-        </div>
 
         {!currentUser && (
           <>
-            <input ref={emailRef} placeholder="Email" />
-            <input ref={passwordRef} type="password" placeholder="Password" />
-            <button disabled={loading} onClick={handleSignUp}>
-              Sign Up
-            </button>
-            <button disabled={loading} onClick={handleLogIn}>
-              Log In
-            </button>
+            <input
+              ref={emailRef}
+              placeholder="Email"
+              className="sign-up-inputs"
+            />
+            <input
+              ref={passwordRef}
+              placeholder="Password"
+              className="sign-up-inputs"
+              type="password"
+            />
+            <div className="form-btns">
+              <Button
+                disabled={loading}
+                onClick={handleSignUp}
+                className="login-btns"
+              >
+                Sign Up
+              </Button>
+
+              <div className="and">and</div>
+              <Button
+                disabled={loading}
+                onClick={handleLogIn}
+                className="login-btns"
+              >
+                Log In
+              </Button>
+            </div>
           </>
         )}
 
         {currentUser && (
-          <>
-            <button disabled={loading} onClick={handleLogOut}>
-              Log Out
-            </button>
-            <button disabled={loading} onClick={logInMenu}>
-              Continue
-            </button>
-          </>
+          <div className="form-btns">
+            <Button
+              disabled={loading}
+              onClick={logInMenu}
+              className="btns-login-menu"
+            >
+              Sign in as {currentUser?.email}
+            </Button>
+
+            <div className="or">or</div>
+            <Button
+              disabled={loading}
+              onClick={handleLogOut}
+              className="btns-login-menu"
+            >
+              Sign up with email and password
+            </Button>
+          </div>
         )}
       </div>
     </div>

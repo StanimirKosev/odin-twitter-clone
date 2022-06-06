@@ -144,6 +144,31 @@ body {
   background-color: rgb(26, 138, 212) !important;
 }
 
+.profile-sidebar-bottom {
+  margin-top: 40px;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  gap: 0 15px;
+  cursor: pointer;
+  border-radius: 20px;
+  position: relative;
+}
+
+.profile-sidebar-bottom:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+.log-out-modal {
+  position: absolute;
+  top: 10px;
+  left: 80%;
+}
+
+.log-out-btn {
+  width: 100px !important;
+}
+
 .profile,
 .feed {
   flex: 0.475;
@@ -331,34 +356,85 @@ body {
   padding-bottom: 10px;
 }
 
-/*****************8*/
 .overlay {
   position: fixed;
-  transition: 200ms ease-in-out;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgb(0, 0, 0, 1);
+  background: rgb(0, 0, 0);
   z-index: 100;
   display: flex;
-  color: white;
+  color: rgb(214, 217, 219);
 }
 
 img[alt*="twitter-login"] {
   width: 55%;
 }
 
+.login-menu {
+  margin-left: 35px;
+  margin-top: 35px;
+  display: flex;
+  flex-direction: column;
+  gap: 40px 0;
+}
+
+.login-menu > h1 {
+  font-size: 70px;
+}
+
+.login-menu > h3 {
+  font-size: 40px;
+}
+
 .logo-login {
-  color: white;
+  font-size: 50px !important;
 }
 
-#email {
-  font-size: 30px;
-  color: white;
+.form-btns {
+  display: flex;
+  flex-direction: column;
+  gap: 35px 0;
+  position: relative;
 }
 
-.user {
-  color: white;
-  margin: 20px;
+.and,
+.or {
+  position: absolute;
+  left: 11%;
+  top: 47px;
+  text-decoration: underline;
+}
+
+.or {
+  left: 26%;
+  top: 45px;
+}
+
+.sign-up-inputs {
+  width: 300px;
+  padding: 10px;
+  font-size: 18px;
+  border-radius: 12px;
+}
+
+.btns-login-menu,
+.login-btns {
+  background-color: var(--twitter-color) !important;
+  color: white !important;
+  font-weight: 800 !important;
+  font-size: 16px !important;
+  border-radius: 10px !important;
+  width: 150px;
+}
+
+.btns-login-menu {
+  width: 300px;
+  font-size: 14px !important;
+}
+
+.btns-login-menu:hover,
+.login-btns:hover {
+  background-color: rgb(27, 129, 197) !important;
 }

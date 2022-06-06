@@ -1,8 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import AutoAwesomeOutlinedIcon from "@mui/icons-material/AutoAwesomeOutlined";
+import User from "../User/User";
 
-function Profile() {
+function Profile({ getAvatar }) {
   return (
     <div className="profile">
       <div className="feed-header">
@@ -15,6 +16,7 @@ function Profile() {
           <AutoAwesomeOutlinedIcon className="header-icon" />
         </div>
       </div>
+      <User getAvatar={getAvatar} />
     </div>
   );
 }

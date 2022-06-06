@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import TwitterIcon from "@mui/icons-material/Twitter";
 import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
 import TagIcon from "@mui/icons-material/Tag";
@@ -9,9 +9,23 @@ import ListAltIcon from "@mui/icons-material/ListAlt";
 import PermIdentityIcon from "@mui/icons-material/PermIdentity";
 import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
 import SidebarOption from "./SidebarOption";
-import { Button } from "@mui/material";
+import { Button, Avatar } from "@mui/material";
+import { logOut } from "../../firebase-config";
 
-function Sidebar() {
+function Sidebar({ logInMenu, avatar }) {
+  const [logOutModal, setLogOutModal] = useState(false);
+  const [loading, setLoading] = useState(false);
+
+  async function handleLogOut() {
+    setLoading(true);
+    try {
+      await logOut();
+      logInMenu();
+    } catch {
+      alert("Error");
+    }
+    setLoading(false);
+  }
   return (
     <div className="sidebar">
       <SidebarOption Icon={TwitterIcon} logo link path="/odin-twitter-clone" />
@@ -38,6 +52,28 @@ function Sidebar() {
       <Button variant="outlined" className="sidebar-tweet" fullWidth>
         Tweet
       </Button>
+      <div
+        className="profile-sidebar-bottom"
+        onClick={() => setLogOutModal(!logOutModal)}
+      >
+        <Avatar src={avatar} />
+        <div>
+          <div>Stanimir Kosev</div>
+          <div>@stanimir</div>
+        </div>
+        <MoreHorizIcon />
+        {logOutModal ? (
+          <div className="log-out-modal">
+            <Button
+              disabled={loading}
+              onClick={handleLogOut}
+              className="btns-login-menu log-out-btn"
+            >
+              Log Out
+            </Button>
+          </div>
+        ) : null}
+      </div>
     </div>
   );
 }

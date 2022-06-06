@@ -2,7 +2,7 @@ import { Avatar } from "@mui/material";
 import React, { useState, useEffect } from "react";
 import { useAuth, upload } from "../../firebase-config";
 
-export default function User() {
+export default function User({ getAvatar }) {
   const currentUser = useAuth();
   const [photoURL, setPhotoURL] = useState();
   const [photo, setPhoto] = useState(null);
@@ -17,7 +17,10 @@ export default function User() {
   }
 
   useEffect(() => {
-    if (currentUser?.photoURL) setPhotoURL(currentUser.photoURL);
+    if (currentUser?.photoURL) {
+      setPhotoURL(currentUser.photoURL);
+      getAvatar(currentUser.photoURL);
+    }
   }, [currentUser]);
 
   return (

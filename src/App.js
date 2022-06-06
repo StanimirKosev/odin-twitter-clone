@@ -9,18 +9,26 @@ import React, { useState } from "react";
 
 function App() {
   const [showLoginMenu, setShowLoginMenu] = useState(true);
+  const [avatar, setAvatar] = useState();
 
   const logInMenu = () => {
     setShowLoginMenu(!showLoginMenu);
   };
 
+  const getAvatar = (photo) => {
+    setAvatar(photo);
+  };
+
   return (
     <Router>
       <div className="app">
-        <Sidebar />
+        <Sidebar logInMenu={logInMenu} avatar={avatar} />
         <Routes>
           <Route path="/odin-twitter-clone" element={<Feed />} />
-          <Route path="/odin-twitter-clone/profile" element={<Profile />} />
+          <Route
+            path="/odin-twitter-clone/profile"
+            element={<Profile getAvatar={getAvatar} />}
+          />
         </Routes>
         <Widgets />
       </div>
