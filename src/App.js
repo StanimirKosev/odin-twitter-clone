@@ -10,6 +10,7 @@ import React, { useState } from "react";
 function App() {
   const [showLoginMenu, setShowLoginMenu] = useState(true);
   const [avatar, setAvatar] = useState();
+
   const logInMenu = () => {
     setShowLoginMenu(!showLoginMenu);
   };

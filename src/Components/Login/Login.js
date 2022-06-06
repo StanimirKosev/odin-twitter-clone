@@ -3,7 +3,6 @@ import { signUp, logOut, logIn, useAuth } from "../../firebase-config";
 import twitterPic from "./twitterPic.webp";
 import TwitterIcon from "@mui/icons-material/Twitter";
 import { Button, Avatar } from "@mui/material";
-import { updateProfile } from "firebase/auth";
 
 function Login({ logInMenu, avatar }) {
   const [loading, setLoading] = useState(false);
@@ -17,7 +16,6 @@ function Login({ logInMenu, avatar }) {
     try {
       await signUp(emailRef.current.value, passwordRef.current.value);
       logInMenu();
-      updateProfile(currentUser, { photoURL: "" });
     } catch {
       alert(
         "Cannot register with same email. Password must be atleast 6 characters!"

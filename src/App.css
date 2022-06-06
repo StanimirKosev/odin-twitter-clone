@@ -220,7 +220,7 @@ body {
 
 .tweet-box-input {
   display: flex;
-  padding: 20px;
+  padding: 20px 20px 0px 20px;
 }
 
 .tweet-box-input > input {
@@ -231,26 +231,16 @@ body {
   outline: none;
 }
 
+.tweet-box-image-input {
+  border: none;
+  outline: none;
+}
+
 .tweet-box-footer {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding-left: 13%;
-}
-
-.picture-icon-container {
-  width: 35px;
-  height: 35px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: all 0.1s ease-in-out;
-  cursor: pointer;
-}
-
-.picture-icon {
-  color: var(--twitter-color);
+  padding-left: 16%;
 }
 
 .tweet-box-tweet-btn {

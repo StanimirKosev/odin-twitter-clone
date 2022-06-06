@@ -48,6 +48,7 @@ export function useAuth() {
 }
 
 export function logOut() {
+  window.location.reload(); //refreshes the avatar
   return signOut(auth);
 }
 
@@ -64,5 +65,6 @@ export async function upload(file, currentUser, setLoading) {
   updateProfile(currentUser, { photoURL });
 
   setLoading(false);
-  alert("Uploading complete");
+  window.location.reload(); // refreshes the avatar
+  alert("Uploading complete. Page will reload.");
 }
