@@ -2,9 +2,10 @@ import React, { useState } from "react";
 import { Avatar, Button } from "@mui/material";
 import { addDoc, collection } from "firebase/firestore";
 import db, { useAuth } from "../../firebase-config";
+import { serverTimestamp } from "firebase/firestore";
 
 function TweetBox({ avatar }) {
-  const [tweetMessage, setTweetMessage] = useState("");
+  const [tweetMessage, setTweetMessage] = useState();
   const [tweetImage, setTweetImage] = useState("");
   const currentUser = useAuth();
 
@@ -19,6 +20,7 @@ function TweetBox({ avatar }) {
       text: tweetMessage,
       avatar: currentUser?.photoURL,
       image: tweetImage,
+      timestamp: serverTimestamp(),
     });
     setTweetMessage("");
     setTweetImage("");
@@ -43,6 +45,7 @@ function TweetBox({ avatar }) {
             onChange={(e) => setTweetImage(e.target.value)}
           />
           <Button
+            disabled={!tweetMessage}
             onClick={sendTweet}
             type="submit"
             className="tweet-box-tweet-btn"

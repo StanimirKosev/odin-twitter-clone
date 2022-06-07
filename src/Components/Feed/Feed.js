@@ -5,18 +5,24 @@ import AutoAwesomeOutlinedIcon from "@mui/icons-material/AutoAwesomeOutlined";
 import FlipMove from "react-flip-move";
 import { Link } from "react-router-dom";
 import db from "../../firebase-config";
-import { collection, onSnapshot } from "firebase/firestore";
+import { collection, onSnapshot, orderBy, query } from "firebase/firestore";
 
 function Feed({ avatar }) {
   const [posts, setPosts] = useState([]);
 
-  useEffect(
-    () =>
-      onSnapshot(collection(db, "posts"), (snapshot) =>
-        setPosts(snapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id })))
-      ),
-    []
-  );
+  useEffect(() => {
+    const collRef = collection(db, "posts");
+    const q = query(collRef, orderBy("timestamp", "desc"));
+
+    const unsub = onSnapshot(q, (snapshot) =>
+      setPosts(snapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id })))
+    );
+    return unsub;
+  }, []);
+
+  useEffect(() => {
+    document.title = "Home / Twitter";
+  });
 
   return (
     <div className="feed">

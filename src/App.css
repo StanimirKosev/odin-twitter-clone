@@ -148,6 +148,10 @@ body {
   background-color: rgb(26, 138, 212) !important;
 }
 
+.tweet-box-tweet-btn:disabled {
+  opacity: 0.5;
+}
+
 .profile-sidebar-bottom {
   margin-top: 40px;
   padding: 10px;
