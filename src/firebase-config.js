@@ -65,6 +65,7 @@ export async function upload(file, currentUser, setLoading) {
   updateProfile(currentUser, { photoURL });
 
   setLoading(false);
-  window.location.reload(); // refreshes the avatar
-  alert("Uploading complete. Page will reload.");
+  alert(
+    "Uploading complete. Go to the homepage and reload to see the changes."
+  );
 }
