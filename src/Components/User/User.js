@@ -1,6 +1,8 @@
 import { Avatar } from "@mui/material";
 import React, { useState, useEffect } from "react";
 import { useAuth, upload } from "../../firebase-config";
+import AddPhotoAlternateOutlinedIcon from "@mui/icons-material/AddPhotoAlternateOutlined";
+import { Button } from "@mui/material";
 
 export default function User({ getAvatar }) {
   const currentUser = useAuth();
@@ -25,11 +27,26 @@ export default function User({ getAvatar }) {
 
   return (
     <div className="user">
-      <input type="file" onChange={handleChange} />
-      <button disabled={loading || !photo} onClick={handleClick}>
-        Upload
-      </button>
-      <Avatar src={photoURL} sx={{ width: 50, height: 50 }} />
+      <Avatar
+        src={photoURL}
+        sx={{ width: 145, height: 145 }}
+        className="profile-pic"
+      />
+      <div className="change-profile">
+        <label className="label-profile-pic">
+          <div className="avatar-img-input-container">
+            <AddPhotoAlternateOutlinedIcon fontSize="large" />
+          </div>
+          <input type="file" onChange={handleChange} />
+        </label>
+        <Button
+          disabled={loading || !photo}
+          onClick={handleClick}
+          className="avatar-btn"
+        >
+          Upload
+        </Button>
+      </div>
     </div>
   );
 }
