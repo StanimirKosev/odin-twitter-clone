@@ -48,7 +48,7 @@ export function useAuth() {
 }
 
 export function logOut() {
-  window.location.reload(); //refreshes the avatar
+  window.location.reload(); // refreshes avatar
   return signOut(auth);
 }
 
@@ -66,6 +66,6 @@ export async function upload(file, currentUser, setLoading) {
 
   setLoading(false);
   alert(
-    "Uploading complete. Go to the homepage and reload to see the changes."
+    "Uploading complete. Switch between the home and profile tab's to see the changes."
   );
 }

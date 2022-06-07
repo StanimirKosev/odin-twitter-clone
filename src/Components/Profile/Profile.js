@@ -6,7 +6,7 @@ import ArrowBackOutlinedIcon from "@mui/icons-material/ArrowBackOutlined";
 import { useAuth } from "../../firebase-config";
 import { Button } from "@mui/material";
 
-function Profile({ getAvatar }) {
+function Profile({ getAvatar, toggleLogOutBtn }) {
   let navigate = useNavigate();
   const currentUser = useAuth();
 
@@ -15,6 +15,7 @@ function Profile({ getAvatar }) {
 
   useEffect(() => {
     document.title = `${username} (${at})`;
+    toggleLogOutBtn(true);
   });
   return (
     <div className="profile">

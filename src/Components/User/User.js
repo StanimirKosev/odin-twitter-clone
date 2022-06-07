@@ -33,6 +33,7 @@ export default function User({ getAvatar }) {
         className="profile-pic"
       />
       <div className="change-profile">
+        <p>Select a pic and then upload.</p>
         <label className="label-profile-pic">
           <div className="avatar-img-input-container">
             <AddPhotoAlternateOutlinedIcon fontSize="large" />

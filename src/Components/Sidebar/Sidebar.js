@@ -12,7 +12,7 @@ import SidebarOption from "./SidebarOption";
 import { Button, Avatar } from "@mui/material";
 import { logOut, useAuth } from "../../firebase-config";
 
-function Sidebar({ logInMenu, avatar }) {
+function Sidebar({ logInMenu, avatar, logOutBtn }) {
   const [logOutModal, setLogOutModal] = useState(false);
   const [loading, setLoading] = useState(false);
   const currentUser = useAuth();
@@ -66,12 +66,13 @@ function Sidebar({ logInMenu, avatar }) {
         {logOutModal ? (
           <div className="log-out-modal">
             <Button
-              disabled={loading}
+              disabled={loading || logOutBtn}
               onClick={handleLogOut}
               className="btns-login-menu log-out-btn"
             >
               Log Out
             </Button>
+            <p>*Enabled in home tab</p>
           </div>
         ) : null}
       </div>

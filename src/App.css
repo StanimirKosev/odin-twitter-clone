@@ -177,6 +177,10 @@ body {
   width: 100px !important;
 }
 
+.log-out-btn:disabled {
+  opacity: 0.5;
+}
+
 .profile,
 .feed {
   flex: 0.475;
@@ -290,6 +294,8 @@ body {
   color: var(--twitter-color);
 }
 
+.change-profile > p,
+.log-out-modal > p,
 .at,
 .post-header-special {
   font-weight: 600;
@@ -484,7 +490,7 @@ img[alt*="twitter-login"] {
   margin-right: 80px;
   display: flex;
   align-items: center;
-  flex-direction: column;
+  gap: 0 10px;
 }
 
 .avatar-btn {

@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 import db from "../../firebase-config";
 import { collection, onSnapshot, orderBy, query } from "firebase/firestore";
 
-function Feed({ avatar }) {
+function Feed({ avatar, toggleLogOutBtn }) {
   const [posts, setPosts] = useState([]);
 
   useEffect(() => {
@@ -22,6 +22,7 @@ function Feed({ avatar }) {
 
   useEffect(() => {
     document.title = "Home / Twitter";
+    toggleLogOutBtn(false);
   });
 
   return (

@@ -10,6 +10,7 @@ import React, { useState } from "react";
 function App() {
   const [showLoginMenu, setShowLoginMenu] = useState(true);
   const [avatar, setAvatar] = useState();
+  const [logOutBtn, setLogOutBtn] = useState();
 
   const logInMenu = () => {
     setShowLoginMenu(!showLoginMenu);
@@ -19,18 +20,27 @@ function App() {
     setAvatar(photo);
   };
 
+  const toggleLogOutBtn = (feedOrProfile) => {
+    setLogOutBtn(feedOrProfile);
+  };
+
   return (
     <Router>
       <div className="app">
-        <Sidebar logInMenu={logInMenu} avatar={avatar} />
+        <Sidebar logInMenu={logInMenu} avatar={avatar} logOutBtn={logOutBtn} />
         <Routes>
           <Route
             path="/odin-twitter-clone"
-            element={<Feed avatar={avatar} />}
+            element={<Feed avatar={avatar} toggleLogOutBtn={toggleLogOutBtn} />}
           />
           <Route
             path="/odin-twitter-clone/profile"
-            element={<Profile getAvatar={getAvatar} />}
+            element={
+              <Profile
+                getAvatar={getAvatar}
+                toggleLogOutBtn={toggleLogOutBtn}
+              />
+            }
           />
         </Routes>
         <Widgets />
